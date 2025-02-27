@@ -1,23 +1,13 @@
 id = os.getComputerID()
 id = tostring(id)
 
-function file_exists(path)
-    --Check if startup.lua exists
-    f = io.open(path, "r")
-    if f ~= nil then
-        return true 
-    else
-        return false
-    end
-end
-
 function writeAliases()
-    if not file_exists("/startup.lua") then
-        print("startup.lua already exists, not adding aliases")
+    if not fs.exists("/startup.lua") then
+        print("\"startup.lua\" exists. Skipping")
         return
     end
     file = io.open("/startup.lua", "w")
-    file:write("shell.setAlias(\"nano\", \"edit\")")
+    file:write("shell.setAlias(\"nano\", \"edit\")\n")
     file:write("shell.setAlias(\"cls\", \"clear\")")
     file:close()
 end
