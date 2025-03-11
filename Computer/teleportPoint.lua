@@ -37,7 +37,7 @@ function getId()
     else 
         file = io.open("/data/teleportPoint.txt", "w")
         id = generateNewId()
-        file:writep(id)
+        file:write(id)
         file:close()
     end
 
